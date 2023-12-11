@@ -56,3 +56,35 @@
 
   docker exec one ping two
   ```
+## 3. Wordpress-Mysql 연동 App 실습
+* MYSQL
+  ```sh
+  docker run --name wp-db -d \
+    -p 3306:3306 \
+    -e MYSQL_ROOT_PASSWORD=P@ssw0rd \
+    -e MYSQL_DATABASE=wordpress \
+    -e MYSQL_USER=wpadm \
+    -e MYSQL_PASSWORD=P@ssw0rd \
+    --restart always \
+    --cpus 0.5 \
+    --memory 1000m \
+    mysql \
+    --character-set-server=utf8mb4 \
+    --collation-server=utf8mb4_unicode_ci \
+    --default-authentication-plugin=mysql_native_password
+  ```
+
+* WORDPRESS
+  ```sh
+  docker run --name wp-web -d \
+    --link wp-db:mysql \
+    -p 80:80 \
+    -e WORDPRESS_DB_HOST=mysql \
+    -e WORDPRESS_DB_USER=wpadm \
+    -e WORDPRESS_DB_PASSWORD=P@ssw0rd \
+    -e WORDPRESS_DB_NAME=wordpress \
+    --restart always \
+    --cpus 0.5 \
+    --memory 500m \
+    wordpress
+  ```
