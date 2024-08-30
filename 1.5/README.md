@@ -59,32 +59,30 @@
 ## 3. Wordpress-Mysql 연동 App 실습
 * MYSQL
   ```sh
-  docker run --name wp-db -d \
-    -p 3306:3306 \
-    -e MYSQL_ROOT_PASSWORD=P@ssw0rd \
-    -e MYSQL_DATABASE=wordpress \
-    -e MYSQL_USER=wpadm \
-    -e MYSQL_PASSWORD=P@ssw0rd \
+  docker run -d \
+    --name db \
     --restart always \
-    --cpus 0.5 \
-    --memory 1000m \
-    mysql \
-    --character-set-server=utf8mb4 \
-    --collation-server=utf8mb4_unicode_ci \
+    -e MYSQL_ROOT_PASSWORD=mysqlroot \
+    -e MYSQL_DATABASE=wordpress \
+    -e MYSQL_USER=wordpress \
+    -e MYSQL_PASSWORD=wordpress \
+    -v db_data:/var/lib/mysql \
+    --expose 3306 \
+    --expose 33060 \
+    mariadb:10.6.4-focal \
     --default-authentication-plugin=mysql_native_password
   ```
 
 * WORDPRESS
   ```sh
-  docker run --name wp-web -d \
-    --link wp-db:mysql \
-    -p 80:80 \
-    -e WORDPRESS_DB_HOST=mysql \
-    -e WORDPRESS_DB_USER=wpadm \
-    -e WORDPRESS_DB_PASSWORD=P@ssw0rd \
-    -e WORDPRESS_DB_NAME=wordpress \
+  docker run -d \
+    --name wordpress \
     --restart always \
-    --cpus 0.5 \
-    --memory 500m \
-    wordpress
+    -e WORDPRESS_DB_HOST=db \
+    -e WORDPRESS_DB_USER=wordpress \
+    -e WORDPRESS_DB_PASSWORD=wordpress \
+    -e WORDPRESS_DB_NAME=wordpress \
+    -p 8085:80 \
+    --link db:db \
+    wordpress:latest
   ```

@@ -1,9 +1,5 @@
-FROM ubuntu:20.04
-
-RUN apt-get update
-
+FROM ubuntu:22.04
+RUN apt-get update -y
+RUN apt-get upgrade -y
 RUN apt-get install -y curl
-
-ENTRYPOINT [ "bash" ]
-
-# CMD [ "bash" ]
+RUN echo "Hello, My name is Codeit" > /home/company.txt

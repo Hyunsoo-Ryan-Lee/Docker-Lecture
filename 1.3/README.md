@@ -13,7 +13,7 @@ docker run -d --name nginx-h -h hyunsoo nginx
 
 ## 3. `-e` 옵션 : 컨테이너 내부 환경 변수 설정
 ```sh
-docke2r run -d --name nginx-e -e MY_NAME=hyunsoo nginx
+docker run -d --name nginx-e -e MY_NAME=hyunsoo nginx
 ```
 
 ## 4. `-l` 옵션 : 컨테이너에 라벨링 할 수 있는 설정

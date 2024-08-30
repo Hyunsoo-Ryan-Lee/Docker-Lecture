@@ -34,12 +34,12 @@
 
 ### 4-1. `--name` 옵션 : 컨테이너에 이름 부여
 ```sh
-docker run --name nnginx nginx
+docker run --name nginx nginx
 ```
 
 ### 4-2. `-d` 옵션 : 백그라운드에서 실행
 ```sh
-docker run -d --name nnginx nginx
+docker run -d --name nginx nginx
 ```
 
 ### 4-3. `-p` 옵션
