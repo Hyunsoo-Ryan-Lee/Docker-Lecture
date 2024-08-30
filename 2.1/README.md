@@ -36,7 +36,6 @@
         - MYSQL_PASSWORD=wordpress
         expose:
         - 3306
-        - 33060
     wordpress:
         image: wordpress:latest
         ports:

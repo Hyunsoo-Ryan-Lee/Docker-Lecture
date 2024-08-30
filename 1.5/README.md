@@ -68,7 +68,6 @@
     -e MYSQL_PASSWORD=wordpress \
     -v db_data:/var/lib/mysql \
     --expose 3306 \
-    --expose 33060 \
     mariadb:10.6.4-focal \
     --default-authentication-plugin=mysql_native_password
   ```
