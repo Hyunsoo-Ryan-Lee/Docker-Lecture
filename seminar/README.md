@@ -1,9 +1,14 @@
+### 0. 초기 세팅
+- brew install watch
+- watch -n 1 docker ps
 ### 1. Docker Hub 로그인
 - docker login
 - docker search nginx
 ### 2. Docker 기본 명령어
 - docker images
 - docker pull [이미지 이름]:[tag]
+  - docker pull nginx
+  - docker pull nginx:1.13.0
 - docker rmi [이미지 이름]
 - docker ps
 - docker ps -a
@@ -38,7 +43,13 @@
   - BEFORE
     - https://www.codeit.kr/topics/data-analysis-using-sql/lessons/3142
   - AFTER
-    - docker run --name mysql_cnt -e MYSQL_ROOT_PASSWORD=codeit -d -p 3307:3306 mysql
+    ```bash
+    docker run --name mysql_cnt \
+      -e MYSQL_ROOT_PASSWORD=codeit \
+      -e MYSQL_USER=hyunsoo \
+      -e MYSQL_PASSWORD=910506 \
+      -d -p 3307:3306 mysql
+    ```
 ### 7. Dockerfile
 - [Dockerfile 옵션들 설명](https://velog.io/@newnew_daddy/DOCKER01)
 - docker build -t [이미지 이름] [Dockerfile 경로]
@@ -71,6 +82,8 @@ services:
     container_name: mysql_cnt
     environment:
       - MYSQL_ROOT_PASSWORD=codeit
+      - MYSQL_USER=hyunsoo
+      - MYSQL_PASSWORD=910506
     ports:
       - "3307:3306"
 ```
@@ -90,6 +103,8 @@ services:
     container_name: mysql_cnt
     environment:
       - MYSQL_ROOT_PASSWORD=codeit
+      - MYSQL_USER=hyunsoo
+      - MYSQL_PASSWORD=910506
     ports:
       - "3307:3306"
 ```

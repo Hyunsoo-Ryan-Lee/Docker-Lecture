@@ -1,0 +1,8 @@
+services:
+  nginx:
+    image: nginx
+    container_name: nginx_cnt
+    ports:
+      - "80:80"
+    volumes:
+      - /Users/hyunsoo/Desktop/Lecture/Docker-lecture/seminar/html:/usr/share/nginx/html/
