@@ -113,36 +113,37 @@ services:
 1. Wordpress-MariaDB
     ```yaml
     services:
-    db:
-        image: mariadb:10.6.4-focal
-        command: '--default-authentication-plugin=mysql_native_password'
-        volumes:
-        - db_data:/var/lib/mysql
-        restart: always
-        environment:
-        - MYSQL_ROOT_PASSWORD=mysqlroot
-        - MYSQL_DATABASE=wordpress
-        - MYSQL_USER=wordpress
-        - MYSQL_PASSWORD=wordpress
-        expose:
-        - 3306
-    wordpress:
-        image: wordpress:latest
-        ports:
-        - 8085:80
-        restart: always
-        environment:
-        - WORDPRESS_DB_HOST=db
-        - WORDPRESS_DB_USER=wordpress
-        - WORDPRESS_DB_PASSWORD=wordpress
-        - WORDPRESS_DB_NAME=wordpress
+      db:
+          image: mariadb:10.6.4-focal
+          command: '--default-authentication-plugin=mysql_native_password'
+          volumes:
+          - db_data:/var/lib/mysql
+          restart: always
+          environment:
+          - MYSQL_ROOT_PASSWORD=mysqlroot
+          - MYSQL_DATABASE=wordpress
+          - MYSQL_USER=wordpress
+          - MYSQL_PASSWORD=wordpress
+          expose:
+          - 3306
+      wordpress:
+          image: wordpress:latest
+          ports:
+          - 8085:80
+          restart: always
+          environment:
+          - WORDPRESS_DB_HOST=db
+          - WORDPRESS_DB_USER=wordpress
+          - WORDPRESS_DB_PASSWORD=wordpress
+          - WORDPRESS_DB_NAME=wordpress
     volumes:
-    db_data:
+      db_data:
     ```
 2. Airflow
   - [Airflow 로컬에 설치(windows)](https://vivekjadhavr.medium.com/how-to-easily-install-apache-airflow-on-windows-6f041c9c80d2)
   - [Airflow Docker-Compose로 설치](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
 ### 10. 추가 참고 자료
 - [도커 네트워크 관련](https://accesto.com/blog/docker-networks-explained-part-2/)
-
+- metabase
+  - docker run -d --network bridge --name metabase -p 3000:3000 metabase/metabase
 
