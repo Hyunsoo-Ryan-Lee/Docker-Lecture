@@ -60,6 +60,7 @@
 ### 8. Docker Compose
 - docker compose up
 - docker compose up -d
+- docker compose ls
 - docker compose ps
 - docker compose down
 
