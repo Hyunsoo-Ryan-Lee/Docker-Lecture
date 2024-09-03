@@ -1,0 +1,17 @@
+services:
+  nginx:
+    image: nginx
+    container_name: nginx_cnt
+    ports:
+      - "80:80"
+    volumes:
+      - host경로/html:/usr/share/nginx/html/
+  mysql:
+    image: mysql
+    container_name: mysql_cnt
+    environment:
+      - MYSQL_ROOT_PASSWORD=codeit
+      - MYSQL_USER=hyunsoo
+      - MYSQL_PASSWORD=910506
+    ports:
+      - "3307:3306"

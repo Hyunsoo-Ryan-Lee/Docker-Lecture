@@ -5,4 +5,4 @@ services:
     ports:
       - "80:80"
     volumes:
-      - /Users/hyunsoo/Desktop/Lecture/Docker-lecture/seminar/html:/usr/share/nginx/html/
+      - $pwd/html:/usr/share/nginx/html/
