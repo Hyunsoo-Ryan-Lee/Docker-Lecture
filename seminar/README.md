@@ -34,10 +34,11 @@
    - docker exec -it nginx_cnt bash
      - cat /usr/share/nginx/html/index.html
      - echo "hello" > /usr/share/nginx/html/index.html
-1. `-v` 
+2. `-v` 
    - docker run -d -p 80:80 -v [host 경로]:/usr/share/nginx/html/ --name nginx_cnt nginx
-2. `-e`
+3. `-e`
    - docker run -d --name fastapi -p 5000:80 -e ENV=codeit hyunsoolee0506/fastapi-img:0.5
+4. For More Options -> [Docker run 옵션 종류](https://wooono.tistory.com/348)
 ### 6. Docker Before&After
 - 컴퓨터에 MYSQL 설치
   - BEFORE
